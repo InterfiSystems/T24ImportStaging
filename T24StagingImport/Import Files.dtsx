@@ -1,0 +1,410 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/29/2024 1:00:04 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="IS-NB-D-01"
+  DTS:CreatorName="AzureAD\ZacNewman"
+  DTS:DTSID="{4EC318F3-FE3A-4BFE-98B7-1B97D4489F51}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="3081"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{4BDF6B26-A898-4F16-8682-48C3AFAC49AC}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ExampleFile]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{B68661BB-12C0-46FD-B0E1-4BCE808CE60C}"
+      DTS:ObjectName="ExampleFile">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\T24ImportStaging\T24StagingImport\DemoFile\LannockEnqId.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Test File"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Test File"
+      DTS:DTSID="{87280420-3F75-4A43-A473-D069401892FD}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Test File"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Test File\Excel Source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Sheet1$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Test File\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[ExampleFile]"
+                  connectionManagerRefId="Package.ConnectionManagers[ExampleFile]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Test File\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Test File\Excel Source.Outputs[Excel Source Output].Columns[EnqId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Test File\Excel Source.Outputs[Excel Source Output].ExternalColumns[EnqId]"
+                      length="255"
+                      lineageId="Package\Test File\Excel Source.Outputs[Excel Source Output].Columns[EnqId]"
+                      name="EnqId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Test File\Excel Source.Outputs[Excel Source Output].Columns[FacilityId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Test File\Excel Source.Outputs[Excel Source Output].ExternalColumns[FacilityId]"
+                      length="255"
+                      lineageId="Package\Test File\Excel Source.Outputs[Excel Source Output].Columns[FacilityId]"
+                      name="FacilityId"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Test File\Excel Source.Outputs[Excel Source Output].ExternalColumns[EnqId]"
+                      dataType="wstr"
+                      length="255"
+                      name="EnqId" />
+                    <externalMetadataColumn
+                      refId="Package\Test File\Excel Source.Outputs[Excel Source Output].ExternalColumns[FacilityId]"
+                      dataType="wstr"
+                      length="255"
+                      name="FacilityId" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Test File\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Test File\Excel Source.Outputs[Excel Source Error Output].Columns[EnqId]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Test File\Excel Source.Outputs[Excel Source Error Output].Columns[EnqId]"
+                      name="EnqId" />
+                    <outputColumn
+                      refId="Package\Test File\Excel Source.Outputs[Excel Source Error Output].Columns[FacilityId]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Test File\Excel Source.Outputs[Excel Source Error Output].Columns[FacilityId]"
+                      name="FacilityId" />
+                    <outputColumn
+                      refId="Package\Test File\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Test File\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Test File\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Test File\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Test File\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Example_Table]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Test File\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{4F8E07A0-3EA4-4234-9F6B-3C3EB0C44DEA}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.T24Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Test File\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Test File\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[EnqId]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="EnqId"
+                      externalMetadataColumnId="Package\Test File\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EnqId]"
+                      lineageId="Package\Test File\Excel Source.Outputs[Excel Source Output].Columns[EnqId]" />
+                    <inputColumn
+                      refId="Package\Test File\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FacilityId]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FacilityId"
+                      externalMetadataColumnId="Package\Test File\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FacilityId]"
+                      lineageId="Package\Test File\Excel Source.Outputs[Excel Source Output].Columns[FacilityId]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Test File\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FacilityId]"
+                      dataType="guid"
+                      name="FacilityId" />
+                    <externalMetadataColumn
+                      refId="Package\Test File\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EnqId]"
+                      dataType="i4"
+                      name="EnqId" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Test File\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Test File\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Test File\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Test File\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Test File\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Test File\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Test File.Paths[Excel Source Output]"
+              endId="Package\Test File\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Test File\Excel Source.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <AnnotationLayout
+          Text="SSIS The basics&#xD;&#xA;&#xD;&#xA;SSIS has two major functions:&#xD;&#xA;Moving data from point A to B - In here called &quot;Data Flow Task&quot;&#xD;&#xA;Or executing SQL statements and stored procedures called &quot;Execute SQL Task&quot;&#xD;&#xA;&#xD;&#xA;When importing Data from a flat file to a SQL data base in SQL you need to do a few things first.&#xD;&#xA;&#xD;&#xA;1. Setup a folder where your files will ALWAYS sit eg. C:\T24Data\&#xD;&#xA;2. Setup your destination tables in the T24Staging Project:&#xD;&#xA;&#xD;&#xA;--- SQL Tables ---&#xD;&#xA;2.1 To Do this, expand the T24Staging database project, expand dbo and on the Tables folder right click and select Add&gt;Table&#xD;&#xA;2.2 Name your table something that makes sense to the data your importing eg. CustomerInformation&#xD;&#xA;2.3 With that table open, define your desired destination feild names and data types. AVOID using NVARCHAR(MAX) as SSIS acts odd with them&#xD;&#xA;2.4 Once you have your table defined, save and close the file and then deploy your database to your local machine&#xD;&#xA;&#xD;&#xA;--- Deploy the SQL Database ---&#xD;&#xA;2.5 Open up SSMS and create a new database called T24Staging&#xD;&#xA;2.5 Right click the SQL project icon and select &quot;Build&quot; this should be pretty quick. &#xD;&#xA;2.6 Once the build is done (You can tell by the bottom bar won't have a loading symbol on there) right click the project again and select Publish&#xD;&#xA;2.7 Hit edit on Target database location&#xD;&#xA;2.8 Select Browse at the top of the edit screen&#xD;&#xA;2.9 Under server name put &quot;Localhost&quot; &#xD;&#xA;2.10 Change Encrypt to: Mandatory (True)&#xD;&#xA;2.11 Change Trust Server Certificate to True&#xD;&#xA;2.12 Under database name put T24Staging&#xD;&#xA;2.13 You now have a publishing profile, so everytime you publish after this point you don't have to do those steps again&#xD;&#xA;2.14 Hit publish and all your tables will be in that DB now&#xD;&#xA;&#xD;&#xA;--- Starting a Data Flow --- &#xD;&#xA;1. Drag and drop the data flow from the LEFT hand bar&#xD;&#xA;2. Name that data flow (Properties in the right hand window) with the file you are dealing with&#xD;&#xA;3. Double click to enter your data flow&#xD;&#xA;4. First select &quot;Source Assistant&quot; and drag that into your data flow, this will give you three options, excel, flat and sql (Select flat or excel depending)&#xD;&#xA;5. Once you have connected your file, a new Connection manager will pop up in the bottom panel, i'd recommend renaming it to the file your using&#xD;&#xA;if you don't they get pretty out of control&#xD;&#xA;6. Your Source will have an error saying it needs a destination, select the Destination assistant and drag that into your data flow&#xD;&#xA;7. Select SQL and I have already setup a connection manager for that called Localhost.T24Staging &#xD;&#xA;8. Drag the green arrow from your source to your destination and they should snap together&#xD;&#xA;9. Double click your destination and select a table and start doing your mapping!&#xD;&#xA;10. Make sure in your destination you have your table mode set to Fast Load&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="810,886"
+          Id="678a27ae-0bc9-4ef6-ac86-d23cea6de467"
+          TopLeft="1124,223" />
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Test File"
+          TopLeft="179,184" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Test File">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Test File\Excel Source"
+          TopLeft="272,196" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Test File\OLE DB Destination"
+          TopLeft="246.5,367.5" />
+        <EdgeLayout
+          Id="Package\Test File.Paths[Excel Source Output]"
+          TopLeft="344,238">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-9,129.5"
+              Start="0,0"
+              End="-9,122">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,60.75"
+                    Point2="0,64.75"
+                    Point3="-4,64.75" />
+                  <mssgle:LineSegment
+                    End="-5,64.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5,64.75"
+                    Point2="-9,64.75"
+                    Point3="-9,68.75" />
+                  <mssgle:LineSegment
+                    End="-9,122" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Test File\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Test File\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
