@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="IS-NB-D-19.T24_20240523"
+  DTS:DTSID="{09AF9DDD-F4BA-439D-9379-EEBCF30C5D7F}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=IS-NB-D-19;Initial Catalog=T24_20240523;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package-{09AF9DDD-F4BA-439D-9379-EEBCF30C5D7F}IS-NB-D-19.T24_20240523;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
